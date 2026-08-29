@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiki — Muckleton</title>
+<meta name="description" content="Classes, world zones, bestiary and systems for Muckleton — reflecting exactly what's playable in the current alpha.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .wiki-layout{ display: grid; grid-template-columns: 220px 1fr; gap: 44px; align-items: start; }
+  .wiki-nav{ position: sticky; top: 90px; display: flex; flex-direction: column; gap: 4px; }
+  .wiki-nav a{
+    padding: 9px 14px; font-size: 0.9rem; color: var(--mist-dim); border-left: 2px solid transparent;
+  }
+  .wiki-nav a:hover{ color: var(--mist); }
+  .wiki-nav a.active{ color: var(--moss-bright); border-left-color: var(--moss-bright); background: rgba(127,166,90,0.06); }
+  @media (max-width: 840px){
+    .wiki-layout{ grid-template-columns: 1fr; }
+    .wiki-nav{ position: static; flex-direction: row; flex-wrap: wrap; gap: 8px; padding-bottom: 10px; border-bottom: 1px solid var(--line); }
+    .wiki-nav a{ border-left: none; border-bottom: 2px solid transparent; padding: 6px 10px; }
+    .wiki-nav a.active{ border-left: none; border-bottom-color: var(--moss-bright); }
+  }
+  table{ width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  th{ text-align: left; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mist-faint); padding: 10px 12px; border-bottom: 1px solid var(--line); }
+  td{ padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; color: var(--mist-dim); }
+  td.lvl{ font-family: var(--font-mono); color: var(--mist); white-space: nowrap; }
+  td.name{ color: var(--mist); font-weight: 600; }
+  .zone-block{ margin-bottom: 56px; }
+  .zone-block h3{ display:flex; align-items:center; gap:12px; }
+  .note{ background: var(--surface-2); border-left: 3px solid var(--lantern); padding: 14px 18px; font-size: 0.88rem; color: var(--mist-dim); margin: 24px 0; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="logo"><span class="logo-mark"></span>MUCKLETON</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="wiki.html" class="active">Wiki</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="community.html">Community</a>
+      <span class="badge-alpha">SOLO-DEV ALPHA</span>
+    </div>
+  </nav>
+</header>
+
+<main class="section-tight">
+  <div class="wrap">
+    <div class="eyebrow">Wiki</div>
+    <h1 style="font-size:2.4rem;">Everything currently in Muckleton</h1>
+    <p class="lede">Classes, zones, monsters and systems — kept in sync with the alpha build. If it's
+      not playable yet, it's marked as such rather than left ambiguous.</p>
+
+    <div class="divider"></div>
+
+    <div class="wiki-layout">
+      <nav class="wiki-nav">
+        <a href="#overview">Overview</a>
+        <a href="#classes">Classes</a>
+        <a href="#world">World &amp; zones</a>
+        <a href="#bestiary">Bestiary</a>
+        <a href="#systems">Systems</a>
+      </nav>
+
+      <div class="wiki-content">
+
+        <!-- OVERVIEW -->
+        <section id="overview" class="wiki-panel">
+          <h2>About this wiki</h2>
+          <p>This wiki documents the current alpha build of Muckleton — a 2.5D low-poly isometric
+            MMORPG built solo in Godot. Design inspiration comes from Ragnarok Online and World of
+            Warcraft, but the goal is for Muckleton to earn its own identity rather than copy either.</p>
+          <p>A few ground rules that shape everything below:</p>
+          <ul style="color:var(--mist-dim);">
+            <li><strong style="color:var(--mist);">Drop info, not drop odds.</strong> The Bestiary lists
+              what a creature can reward — gold, materials, gear — never exact percentages. That's a
+              deliberate choice, not a missing feature.</li>
+            <li><strong style="color:var(--mist);">"Coming soon" means exactly that.</strong> Zones and
+              systems that only exist as a plan are labelled clearly, never presented as playable.</li>
+            <li><strong style="color:var(--mist);">No accounts yet.</strong> Character progress lives on
+              your own PC for now. See the <a href="roadmap.html" style="color:var(--moss-bright); text-decoration:underline;">Roadmap</a> for what changes that.</li>
+          </ul>
+        </section>
+
+        <!-- CLASSES -->
+        <section id="classes" class="wiki-panel" hidden>
+          <h2>Classes</h2>
+          <p>Five Base Classes are playable today. Each has its own weapon identity, basic attack
+            range, primary stat and a first ability bound to Hotbar slot 1 — plus a fully authored
+            talent tree.</p>
+
+          <div style="overflow-x:auto;">
+            <table>
+              <thead>
+                <tr><th>Class</th><th>Weapon</th><th>Attack</th><th>Primary stat</th><th>Ability</th><th>Resource</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="name">Warrior</td><td>Sword</td><td>Melee</td><td>Strength</td>
+                  <td>Power Strike</td><td>Rage</td>
+                </tr>
+                <tr>
+                  <td class="name">Rogue</td><td>Dagger</td><td>Melee</td><td>Agility</td>
+                  <td>Quick Stab</td><td>—</td>
+                </tr>
+                <tr>
+                  <td class="name">Hunter</td><td>Bow</td><td>Ranged (physical)</td><td>Dexterity</td>
+                  <td>Power Shot</td><td>—</td>
+                </tr>
+                <tr>
+                  <td class="name">Mage</td><td>Staff</td><td>Ranged (magic)</td><td>Intelligence</td>
+                  <td>Arcane Bolt</td><td>—</td>
+                </tr>
+                <tr>
+                  <td class="name">Luminary</td><td>Scepter &amp; Tome</td><td>Ranged (magic)</td><td>Intelligence</td>
+                  <td>Luminous Brand</td><td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p style="margin-top:20px;">Luminary is Muckleton's healer/support class — closer to a
+            Shadow Priest archetype than "a Mage with heals." Its ability heals the caster on a
+            successful hit, and it carries enough ranged damage to level solo without a group.</p>
+
+          <div class="note">Each class has a complete talent tree — a Foundation tier plus a deeper
+            Lower Tree with Keystones and 2nd/3rd Class capstones. Full node-by-node breakdowns are
+            planned for a future wiki update.</div>
+        </section>
+
+        <!-- WORLD -->
+        <section id="world" class="wiki-panel" hidden>
+          <h2>World &amp; zones</h2>
+          <p>Muckleton's regions unlock roughly in this order. Each outdoor zone connects to the next
+            by a continuous route rather than a loading-screen jump.</p>
+
+          <div class="zone-block">
+            <h3>Ribbit Clearing <span class="tag tag-normal">Lv 1–6</span></h3>
+            <p>The starter zone. Twelve named Frog camps hold a total of 58 normal Frogs, ranging
+              from beginner camps near spawn to tougher pockets further out. Home to the first
+              quest hub and the entrance to Mossback Hollow.</p>
+          </div>
+
+          <div class="zone-block">
+            <h3>Mossback Hollow <span class="tag tag-normal">Lv 6–8 · Cave</span></h3>
+            <p>A cave beneath the clearing: fourteen Mossback Frogs guarding a narrow descent, ending
+              in the Broodmother's own isolated chamber.</p>
+          </div>
+
+          <div class="zone-block">
+            <h3>The Sunken Reliquary <span class="tag tag-normal">Lv 12–14 · Dungeon</span></h3>
+            <p>Muckleton's first proper dungeon — a partially flooded temple beneath Ribbit Valley.
+              Eight elite camps guard the route to two environmental seals; both must be activated
+              before the final sanctum opens.</p>
+          </div>
+
+          <div class="zone-block">
+            <h3>Mirewood Crossing <span class="tag tag-normal">Lv 7–15 · Outdoor</span></h3>
+            <p>The road north out of the clearing, populated by Bog Toads, Mirefang Spiders and
+              Rotcap Shamblers across nine grind camps, guarded by the isolated Mireheart. Two side
+              dungeons — Rotroot Burrow and Briarfen Hold — branch off the main road.</p>
+          </div>
+
+          <div class="zone-block">
+            <h3>Mirefen Basin <span class="tag tag-normal">Lv 14–22 · Outdoor</span></h3>
+            <p>A wide basin built around a Fenwarden hub, with five distinct monster families —
+              Fen Drakes, Marsh Wisps, Reed Stalkers, Drowned Acolytes and a Reedspine Dartcaller
+              pocket — spread across thirteen camps. Ulmor, the Basin Horror, holds the zone's
+              outdoor boss encounter. Three more instances branch from here: Gloamroot Cave, The
+              Drowned Temple and Rootvault Depths.</p>
+          </div>
+
+          <div class="divider"></div>
+
+          <h3 style="display:flex; align-items:center; gap:12px;">On the horizon <span class="tag tag-soon">Not yet playable</span></h3>
+          <p>The road to level 30 continues into four more regions. Their outdoor footprints and entry
+            points already exist in the world, but the bespoke content inside them — encounters,
+            quests, interiors — hasn't been built yet.</p>
+          <div class="grid grid-2" style="margin-top:16px;">
+            <div class="card facet"><h3 style="font-size:1rem;">Gloamcap Wilds</h3><p style="font-size:0.87rem; margin:0;">Fungal melee and ranged camps.</p></div>
+            <div class="card facet"><h3 style="font-size:1rem;">Ashenroot Frontier</h3><p style="font-size:0.87rem; margin:0;">Drakes, crushers and ember casters.</p></div>
+            <div class="card facet"><h3 style="font-size:1rem;">Threshold March</h3><p style="font-size:0.87rem; margin:0;">Elite packs guarding the road to Muckleton's first raid, The Crownless Gate.</p></div>
+            <div class="card facet"><h3 style="font-size:1rem;">Elderhavn</h3><p style="font-size:0.87rem; margin:0;">The capital city — Market, Forge, Training Court, Guild Quarter and Wayfarer Shrine.</p></div>
+          </div>
+        </section>
+
+        <!-- BESTIARY -->
+        <section id="bestiary" class="wiki-panel" hidden>
+          <h2>Bestiary</h2>
+          <p>What each creature can reward, grouped by zone. Drops are described by category, not by
+            percentage — that's intentional, see the Overview tab.</p>
+
+          <h3 style="margin-top:32px;">Ribbit Clearing &amp; Mossback Hollow</h3>
+          <div style="overflow-x:auto;">
+            <table>
+              <thead><tr><th>Creature</th><th>Level</th><th>Role</th><th>Drops</th></tr></thead>
+              <tbody>
+                <tr><td class="name">Frog</td><td class="lvl">1–6</td><td><span class="tag tag-normal">Normal</span></td><td>Gold and starter crafting materials.</td></tr>
+                <tr><td class="name">Mossback Frog</td><td class="lvl">6</td><td><span class="tag tag-normal">Normal</span></td><td>Gold and materials, cave-tier.</td></tr>
+                <tr><td class="name">Mossback Broodmother</td><td class="lvl">8</td><td><span class="tag tag-mini">Miniboss</span></td><td>Guaranteed cave-tier reward, plus gold.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="margin-top:36px;">The Sunken Reliquary</h3>
+          <div style="overflow-x:auto;">
+            <table>
+              <thead><tr><th>Creature</th><th>Level</th><th>Role</th><th>Drops</th></tr></thead>
+              <tbody>
+                <tr><td class="name">Reliquary Tender</td><td class="lvl">~12</td><td><span class="tag tag-elite">Elite (support)</span></td><td>Gold, materials, chance at dungeon gear.</td></tr>
+                <tr><td class="name">Sluice Guardian</td><td class="lvl">12</td><td><span class="tag tag-mini">Miniboss</span></td><td>Guaranteed dungeon-tier reward, plus gold.</td></tr>
+                <tr><td class="name">Mirebound Warden</td><td class="lvl">14</td><td><span class="tag tag-boss">Boss</span></td><td>Guaranteed boss-tier reward, plus gold.</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:0.82rem; color:var(--mist-faint); margin-top:10px;">Elite camps also include frontline, caster and disruptor roles alongside the Tender — their exact names are still being finalised.</p>
+
+          <h3 style="margin-top:36px;">Mirewood Crossing</h3>
+          <div style="overflow-x:auto;">
+            <table>
+              <thead><tr><th>Creature</th><th>Level</th><th>Role</th><th>Drops</th></tr></thead>
+              <tbody>
+                <tr><td class="name">Bog Toad</td><td class="lvl">7–10</td><td><span class="tag tag-normal">Normal</span></td><td>Gold and zone materials.</td></tr>
+                <tr><td class="name">Mirefang Spider</td><td class="lvl">9–12</td><td><span class="tag tag-normal">Normal</span></td><td>Gold and zone materials.</td></tr>
+                <tr><td class="name">Rotcap Shambler</td><td class="lvl">11–14</td><td><span class="tag tag-normal">Normal</span></td><td>Gold and zone materials.</td></tr>
+                <tr><td class="name">Mireheart</td><td class="lvl">15</td><td><span class="tag tag-boss">Boss</span></td><td>Guaranteed boss-tier reward, plus gold.</td></tr>
+                <tr><td class="name">Thornback Puddleknights</td><td class="lvl">—</td><td><span class="tag tag-elite">Elite</span></td><td>Guards Briarfen Hold; gold and instance materials.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="margin-top:36px;">Mirefen Basin &amp; its instances</h3>
+          <div style="overflow-x:auto;">
+            <table>
+              <thead><tr><th>Creature</th><th>Level</th><th>Role</th><th>Drops</th></tr></thead>
+              <tbody>
+                <tr><td class="name">Fen Drake</td><td class="lvl">14–22</td><td><span class="tag tag-normal">Normal</span></td><td>Gold and zone materials.</td></tr>
+                <tr><td class="name">Marsh Wisp</td><td class="lvl">14–22</td><td><span class="tag tag-normal">Normal</span></td><td>Gold and zone materials.</td></tr>
+                <tr><td class="name">Reed Stalker</td><td class="lvl">14–22</td><td><span class="tag tag-normal">Normal</span></td><td>Gold and zone materials.</td></tr>
+                <tr><td class="name">Drowned Acolyte</td><td class="lvl">14–22</td><td><span class="tag tag-normal">Normal</span></td><td>Gold and zone materials.</td></tr>
+                <tr><td class="name">Reedspine Dartcaller</td><td class="lvl">14–22</td><td><span class="tag tag-elite">Elite pocket</span></td><td>Gold and its own dedicated loot profile.</td></tr>
+                <tr><td class="name">Ulmor, the Basin Horror</td><td class="lvl">22</td><td><span class="tag tag-boss">Boss</span></td><td>Guaranteed boss-tier reward, plus gold.</td></tr>
+                <tr><td class="name">Moonfen Skulkers</td><td class="lvl">—</td><td><span class="tag tag-elite">Elite</span></td><td>Inhabit Gloamroot Cave.</td></tr>
+                <tr><td class="name">Mirejaw Totemguards</td><td class="lvl">—</td><td><span class="tag tag-elite">Elite</span></td><td>Guard The Drowned Temple.</td></tr>
+                <tr><td class="name">Lantern Mireseers</td><td class="lvl">—</td><td><span class="tag tag-elite">Elite</span></td><td>Inhabit Rootvault Depths.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="note">Muckleton's full item catalogue — specific weapons, armor and materials —
+            isn't published yet, so drops are listed by category rather than by name. This page will
+            grow into a proper item list as itemization is finished.</div>
+        </section>
+
+        <!-- SYSTEMS -->
+        <section id="systems" class="wiki-panel" hidden>
+          <h2>Systems</h2>
+          <div class="grid grid-2" style="margin-top:20px;">
+            <div class="card facet">
+              <h3>Combat</h3>
+              <p style="font-size:0.9rem; margin:0;">Right-click to Auto Attack. Melee classes close
+                to melee range; Hunter and Mage approach to 3 tiles and fire from range. Hotbar slot 1
+                holds each class's signature ability on its own cooldown.</p>
+            </div>
+            <div class="card facet">
+              <h3>Leveling &amp; XP</h3>
+              <p style="font-size:0.9rem; margin:0;">Levels 1–60. XP is awarded once per legitimate
+                kill, shared automatically across a party. Max HP grows with every level.</p>
+            </div>
+            <div class="card facet">
+              <h3>Talent trees</h3>
+              <p style="font-size:0.9rem; margin:0;">Every class has a full tree: a Foundation tier,
+                a deeper Lower Tree, Keystones, and mutually exclusive 2nd/3rd Class capstones.</p>
+            </div>
+            <div class="card facet">
+              <h3>Inventory &amp; equipment</h3>
+              <p style="font-size:0.9rem; margin:0;">A 48-slot bag with auto-sort and category
+                filters, plus 15 equipment slots. Right-click a bag item to equip it.</p>
+            </div>
+            <div class="card facet">
+              <h3>Rest</h3>
+              <p style="font-size:0.9rem; margin:0;">Sit down with X to recover — cancelled by almost
+                any gameplay input or incoming damage.</p>
+            </div>
+            <div class="card facet">
+              <h3>Social</h3>
+              <p style="font-size:0.9rem; margin:0;">Zone and whisper chat, a mutual-accept friends
+                list, and party support with shared XP.</p>
+            </div>
+            <div class="card facet">
+              <h3>Dungeons</h3>
+              <p style="font-size:0.9rem; margin:0;">Instanced runs with party ownership, objective
+                tracking, and a wipe counter. Defeating the final boss completes the run.</p>
+            </div>
+            <div class="card facet">
+              <h3>Character saves</h3>
+              <p style="font-size:0.9rem; margin:0;">Currently stored locally per PC — level, XP,
+                position, talents, inventory, gold, equipment, quests, friends and appearance all
+                persist between sessions on the same machine.</p>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="logo" style="margin-bottom:10px;"><span class="logo-mark"></span>MUCKLETON</div>
+      <p class="footer-note">This wiki reflects the current alpha build and will keep changing as
+        development continues.</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="community.html">Community</a>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>

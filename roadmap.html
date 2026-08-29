@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roadmap — Muckleton</title>
+<meta name="description" content="What's live, what's next, and what's planned for Muckleton — an honest roadmap for a solo-developer MMORPG.">
+<link rel="stylesheet" href="styles.css">
+<style>
+  .road-col{ border-top: 3px solid var(--line); padding-top: 22px; }
+  .road-col.now{ border-top-color: var(--moss-bright); }
+  .road-col.next{ border-top-color: var(--lantern); }
+  .road-col.later{ border-top-color: var(--water); }
+  .road-col ul{ list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 14px; }
+  .road-col li{ padding-left: 18px; position: relative; color: var(--mist-dim); font-size: 0.92rem; }
+  .road-col li::before{ content:''; position:absolute; left:0; top:8px; width:6px; height:6px; background: var(--line); clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); }
+  .road-col.now li::before{ background: var(--moss-bright); }
+  .road-col.next li::before{ background: var(--lantern); }
+  .road-col.later li::before{ background: var(--water); }
+  .road-col strong{ color: var(--mist); }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="logo"><span class="logo-mark"></span>MUCKLETON</a>
+    <button class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="wiki.html">Wiki</a>
+      <a href="roadmap.html" class="active">Roadmap</a>
+      <a href="community.html">Community</a>
+      <span class="badge-alpha">SOLO-DEV ALPHA</span>
+    </div>
+  </nav>
+</header>
+
+<main class="section-tight">
+  <div class="wrap">
+    <div class="eyebrow">Roadmap</div>
+    <h1 style="font-size:2.4rem;">What's live, what's next, what's planned</h1>
+    <p class="lede">Built by one developer, in public. This page reflects priority, not promised
+      dates — and nothing here is marked "Now" unless it's actually playable today.</p>
+
+    <div class="divider"></div>
+
+    <div class="grid grid-3">
+      <div class="road-col now">
+        <span class="tag tag-normal">Now — playable</span>
+        <h2 style="font-size:1.3rem; margin-top:14px;">Current alpha</h2>
+        <ul style="margin-top:18px;">
+          <li><strong>5 classes</strong> — Warrior, Rogue, Hunter, Mage, Luminary — each with a full talent tree.</li>
+          <li><strong>5 regions</strong> — Ribbit Clearing, Mossback Hollow, The Sunken Reliquary, Mirewood Crossing, Mirefen Basin, plus five side instances.</li>
+          <li><strong>Inventory &amp; equipment</strong> — 48-slot bag, 15 gear slots, drops from kills.</li>
+          <li><strong>Party, friends &amp; chat</strong> — zone/whisper channels, mutual-accept friends.</li>
+          <li><strong>Local character saves</strong> — persistent on your own PC, not yet account-bound.</li>
+        </ul>
+      </div>
+
+      <div class="road-col next">
+        <span class="tag tag-mini">Next — Road to Level 30</span>
+        <h2 style="font-size:1.3rem; margin-top:14px;">World foundation is laid; content is next</h2>
+        <ul style="margin-top:18px;">
+          <li><strong>Gloamcap Wilds</strong> — fungal melee/ranged camps.</li>
+          <li><strong>Ashenroot Frontier</strong> — drakes, crushers, ember casters.</li>
+          <li><strong>Threshold March</strong> — a focused elite gauntlet leading to Muckleton's first raid, The Crownless Gate.</li>
+          <li><strong>Elderhavn</strong> — the capital city: Market Exchange, Forge &amp; Repairs, Training Court, Guild Quarter, Wayfarer Shrine.</li>
+        </ul>
+      </div>
+
+      <div class="road-col later">
+        <span class="tag tag-elite">Later — planned</span>
+        <h2 style="font-size:1.3rem; margin-top:14px;">Not started yet</h2>
+        <ul style="margin-top:18px;">
+          <li><strong>Persistent accounts</strong> — server-authoritative saves so a character isn't tied to one PC. This is also what a future website login would connect to.</li>
+          <li><strong>Trading &amp; vendors</strong> — currently no economy between players.</li>
+          <li><strong>Full item system</strong> — affixes, item level, durability, bind rules.</li>
+          <li><strong>Mounts</strong> and additional class specializations.</li>
+          <li><strong>Community accounts on this site</strong> — depends entirely on the backend above existing first.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note card facet" style="margin-top:64px; border-left: 3px solid var(--lantern); padding: 22px 26px;">
+      <p style="margin:0; color: var(--mist-dim);"><strong style="color:var(--mist);">Why no dates?</strong>
+        Muckleton is built by one person outside of a studio schedule. A date I can't guarantee isn't
+        useful to you — the order above is. Follow the <a href="community.html" style="color:var(--moss-bright); text-decoration:underline;">devlog</a>
+        for what actually shipped, when it shipped.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div>
+      <div class="logo" style="margin-bottom:10px;"><span class="logo-mark"></span>MUCKLETON</div>
+      <p class="footer-note">Roadmap order reflects development priority, not a committed schedule.</p>
+    </div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="wiki.html">Wiki</a>
+      <a href="community.html">Community</a>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
